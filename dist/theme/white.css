@@ -1,43 +1,41 @@
-/**
- * White theme for reveal.js. This is the opposite of the 'black' theme.
- *
- * By Hakim El Hattab, http://hakim.se
- */
-@import url(./fonts/source-sans-pro/source-sans-pro.css);
-section.has-dark-background, section.has-dark-background h1, section.has-dark-background h2, section.has-dark-background h3, section.has-dark-background h4, section.has-dark-background h5, section.has-dark-background h6 {
-  color: #fff;
+@import url(./fonts/cmu-serif/cmu-serif.css);
+@import url(https://cdn.jsdelivr.net/npm/firacode@6.2.0/distr/fira_code.css);
+@supports (font-variation-settings: normal) {
+  code { font-family: 'Fira Code VF', monospace; }
 }
+
+section.has-dark-background, section.has-dark-background h1, section.has-dark-background h2, section.has-dark-background h3, section.has-dark-background h4, section.has-dark-background h5, section.has-dark-background h6 {
+    color: #fff;
+  }
 
 /*********************************************
  * GLOBAL STYLES
  *********************************************/
 :root {
   --r-background-color: #fff;
-  --r-main-font: Source Sans Pro, Helvetica, sans-serif;
+  --r-main-font: 'CMU Serif', serif;
   --r-main-font-size: 42px;
-  --r-main-color: #222;
-  --r-block-margin: 20px;
+  --r-main-color: #000;
+  --r-block-margin: 0px;
   --r-heading-margin: 0 0 20px 0;
-  --r-heading-font: Source Sans Pro, Helvetica, sans-serif;
-  --r-heading-color: #222;
+  --r-heading-font: 'CMU Serif', serif;
+  --r-heading-color: #000;
   --r-heading-line-height: 1.2;
   --r-heading-letter-spacing: normal;
-  --r-heading-text-transform: uppercase;
+  --r-heading-text-transform: none;
   --r-heading-text-shadow: none;
-  --r-heading-font-weight: 600;
+  --r-heading-font-weight: 450;
   --r-heading1-text-shadow: none;
   --r-heading1-size: 2.5em;
   --r-heading2-size: 1.6em;
   --r-heading3-size: 1.3em;
   --r-heading4-size: 1em;
-  --r-code-font: monospace;
+  --r-code-font: 'Fira Code', monospace;
   --r-link-color: #2a76dd;
   --r-link-color-dark: #1a53a1;
   --r-link-color-hover: #6ca0e8;
   --r-selection-background-color: #98bdef;
   --r-selection-color: #fff;
-  --r-overlay-element-bg-color: 0, 0, 0;
-  --r-overlay-element-fg-color: 240, 240, 240;
 }
 
 .reveal-viewport {
@@ -205,26 +203,42 @@ section.has-dark-background, section.has-dark-background h1, section.has-dark-ba
   font-style: italic;
 }
 
-.reveal pre {
+/* `tree-sitter highlight --html` generate a big `<table>` (to render line numbers)... */
+.reveal pre, table {
   display: block;
   position: relative;
-  width: 90%;
   margin: var(--r-block-margin) auto;
   text-align: left;
   font-size: 0.55em;
   font-family: var(--r-code-font);
   line-height: 1.2em;
   word-wrap: break-word;
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.reveal .line-number {
+  user-select: none;
+  text-align: right;
+  color: rgba(27,31,35,.3);
+  padding: 0 10px;
 }
 
 .reveal code {
   font-family: var(--r-code-font);
   text-transform: none;
   tab-size: 2;
+  padding: .2em .4em;
+  margin: 0;
+  font-size: 75%;
+  white-space: break-spaces;
+  background-color: rgba(110,118,129,0.4);
+  border-radius: 6px;
 }
 
-.reveal pre code {
+/* `tree-sitter highlight --html` generate a big `<table>` (to render line numbers)... */
+.reveal pre code, table {
+  background-color: transparent;
+  border-radius: 0;
+  font-size: 60%;
   display: block;
   padding: 5px;
   overflow: auto;
@@ -236,11 +250,12 @@ section.has-dark-background, section.has-dark-background h1, section.has-dark-ba
   white-space: normal;
 }
 
-.reveal .code-wrapper code {
+.reveal .code-wrapper code,
+.reveal .line {
   white-space: pre;
 }
 
-.reveal table {
+/* .reveal table {
   margin: auto;
   border-collapse: collapse;
   border-spacing: 0;
@@ -270,7 +285,7 @@ section.has-dark-background, section.has-dark-background h1, section.has-dark-ba
 .reveal table tbody tr:last-child th,
 .reveal table tbody tr:last-child td {
   border-bottom: none;
-}
+} */
 
 .reveal sup {
   vertical-align: super;
